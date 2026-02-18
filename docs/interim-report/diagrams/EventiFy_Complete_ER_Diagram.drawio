@@ -1,0 +1,868 @@
+<mxfile host="app.diagrams.net" modified="2026-02-18T16:40:00.000Z" agent="EventiFy ER Diagram Generator" version="21.0.0" etag="complete-er-diagram" type="device">
+  <diagram id="EventiFy-ER-Diagram" name="EventiFy Complete ER Diagram">
+    <mxGraphModel dx="2000" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="EventiFy System - Complete ER Diagram (Chen Notation)&#xa;Group 88 - Plymouth Batch 13" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="800" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             USER ENTITY (Base Entity)
+        ======================================== -->
+        <mxCell id="user-entity" value="User" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- User Attributes -->
+        <mxCell id="user-id" value="userID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="140" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-name" value="name" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="550" y="190" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-email" value="email" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="540" y="240" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-password" value="password" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="560" y="290" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-role" value="role" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="850" y="160" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-phone" value="phone" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="870" y="210" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-created" value="createdAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="860" y="260" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user-updated" value="updatedAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="840" y="310" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect User Attributes -->
+        <mxCell id="user-id-edge" edge="1" parent="1" source="user-id" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-name-edge" edge="1" parent="1" source="user-name" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-email-edge" edge="1" parent="1" source="user-email" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-password-edge" edge="1" parent="1" source="user-password" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-role-edge" edge="1" parent="1" source="user-role" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-phone-edge" edge="1" parent="1" source="user-phone" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-created-edge" edge="1" parent="1" source="user-created" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user-updated-edge" edge="1" parent="1" source="user-updated" target="user-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             CLIENT ENTITY (Inherits from User)
+        ======================================== -->
+        <mxCell id="client-entity" value="Client" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Client Attributes -->
+        <mxCell id="client-id" value="clientID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="250" y="420" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="client-userid" value="userID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="470" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="client-pref" value="preferences" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="250" y="520" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="client-budget" value="budget" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="390" y="560" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="client-history" value="eventHistory" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="480" y="560" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Client Attributes -->
+        <mxCell id="client-id-edge" edge="1" parent="1" source="client-id" target="client-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="client-userid-edge" edge="1" parent="1" source="client-userid" target="client-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="client-pref-edge" edge="1" parent="1" source="client-pref" target="client-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="client-budget-edge" edge="1" parent="1" source="client-budget" target="client-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="client-history-edge" edge="1" parent="1" source="client-history" target="client-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             VENDOR ENTITY (Inherits from User)
+        ======================================== -->
+        <mxCell id="vendor-entity" value="Vendor" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="950" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Vendor Attributes -->
+        <mxCell id="vendor-id" value="vendorID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1100" y="400" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-userid" value="userID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="450" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-name" value="businessName" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="500" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-cat" value="category" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="550" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-rating" value="rating" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="580" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-status" value="status" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="920" y="580" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-verified" value="verifiedAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="840" y="560" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-desc" value="description" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="800" y="510" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-loc" value="location" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="800" y="460" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Vendor Attributes -->
+        <mxCell id="vendor-id-edge" edge="1" parent="1" source="vendor-id" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-userid-edge" edge="1" parent="1" source="vendor-userid" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-name-edge" edge="1" parent="1" source="vendor-name" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-cat-edge" edge="1" parent="1" source="vendor-cat" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-rating-edge" edge="1" parent="1" source="vendor-rating" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-status-edge" edge="1" parent="1" source="vendor-status" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-verified-edge" edge="1" parent="1" source="vendor-verified" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-desc-edge" edge="1" parent="1" source="vendor-desc" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vendor-loc-edge" edge="1" parent="1" source="vendor-loc" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             ADMIN ENTITY (Inherits from User) - NEW!
+        ======================================== -->
+        <mxCell id="admin-entity" value="Admin" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Admin Attributes -->
+        <mxCell id="admin-id" value="adminID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="540" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-userid" value="userID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="690" y="560" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-perm" value="permissions" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="780" y="560" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-login" value="lastLoginAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="860" y="540" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Admin Attributes -->
+        <mxCell id="admin-id-edge" edge="1" parent="1" source="admin-id" target="admin-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-userid-edge" edge="1" parent="1" source="admin-userid" target="admin-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-perm-edge" edge="1" parent="1" source="admin-perm" target="admin-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-login-edge" edge="1" parent="1" source="admin-login" target="admin-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             IS-A RELATIONSHIPS (Inheritance)
+        ======================================== -->
+        <mxCell id="isa-client-rel" value="IS-A" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="580" y="320" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="isa-vendor-rel" value="IS-A" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="850" y="320" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="isa-admin-rel" value="IS-A" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="720" y="320" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- IS-A Connections -->
+        <mxCell id="user-isa-client" value="1:1" edge="1" parent="1" source="user-entity" target="isa-client-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="isa-client-client" edge="1" parent="1" source="isa-client-rel" target="client-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-isa-vendor" value="1:1" edge="1" parent="1" source="user-entity" target="isa-vendor-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="isa-vendor-vendor" edge="1" parent="1" source="isa-vendor-rel" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-isa-admin" value="1:1" edge="1" parent="1" source="user-entity" target="isa-admin-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="isa-admin-admin" edge="1" parent="1" source="isa-admin-rel" target="admin-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             EVENT ENTITY
+        ======================================== -->
+        <mxCell id="event-entity" value="Event" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Event Attributes - ALL COMPLETE -->
+        <mxCell id="event-id" value="eventID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="700" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-clientid" value="clientID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="210" y="750" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-name" value="eventName" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="220" y="800" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-date" value="eventDate" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-location" value="location" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="340" y="870" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-budget" value="budget" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="430" y="870" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-guests" value="guestCount" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="500" y="850" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-status" value="status" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="560" y="810" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-desc" value="description" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="560" y="760" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-created" value="createdAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="540" y="710" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="event-updated" value="updatedAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="520" y="660" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Event Attributes -->
+        <mxCell id="event-id-edge" edge="1" parent="1" source="event-id" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-clientid-edge" edge="1" parent="1" source="event-clientid" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-name-edge" edge="1" parent="1" source="event-name" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-date-edge" edge="1" parent="1" source="event-date" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-location-edge" edge="1" parent="1" source="event-location" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-budget-edge" edge="1" parent="1" source="event-budget" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-guests-edge" edge="1" parent="1" source="event-guests" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-status-edge" edge="1" parent="1" source="event-status" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-desc-edge" edge="1" parent="1" source="event-desc" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-created-edge" edge="1" parent="1" source="event-created" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="event-updated-edge" edge="1" parent="1" source="event-updated" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             CREATES RELATIONSHIP (Client → Event)
+        ======================================== -->
+        <mxCell id="creates-rel" value="Creates" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="420" y="600" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="client-creates" value="1" edge="1" parent="1" source="client-entity" target="creates-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="creates-event" value="M" edge="1" parent="1" source="creates-rel" target="event-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             SERVICE ENTITY - COMPLETE ATTRIBUTES
+        ======================================== -->
+        <mxCell id="service-entity" value="Service" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Service Attributes - ALL COMPLETE -->
+        <mxCell id="service-id" value="serviceID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1320" y="680" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-vendorid" value="vendorID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="730" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-category" value="category" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="780" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-name" value="serviceName" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="830" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-desc" value="description" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="870" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-price" value="price" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="880" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-avail" value="availability" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="870" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-duration" value="duration" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="830" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="service-created" value="createdAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="780" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Service Attributes -->
+        <mxCell id="service-id-edge" edge="1" parent="1" source="service-id" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-vendorid-edge" edge="1" parent="1" source="service-vendorid" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-category-edge" edge="1" parent="1" source="service-category" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-name-edge" edge="1" parent="1" source="service-name" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-desc-edge" edge="1" parent="1" source="service-desc" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-price-edge" edge="1" parent="1" source="service-price" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-avail-edge" edge="1" parent="1" source="service-avail" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-duration-edge" edge="1" parent="1" source="service-duration" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="service-created-edge" edge="1" parent="1" source="service-created" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             OFFERS RELATIONSHIP (Vendor → Service)
+        ======================================== -->
+        <mxCell id="offers-rel" value="Offers" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1050" y="600" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vendor-offers" value="1" edge="1" parent="1" source="vendor-entity" target="offers-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="offers-service" value="M" edge="1" parent="1" source="offers-rel" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             BOOKING ENTITY - COMPLETE ATTRIBUTES
+        ======================================== -->
+        <mxCell id="booking-entity" value="Booking" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="950" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Booking Attributes - ALL COMPLETE -->
+        <mxCell id="booking-id" value="bookingID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="890" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-eventid" value="eventID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="580" y="940" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-vendorid" value="vendorID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="580" y="990" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-serviceid" value="serviceID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1040" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-date" value="bookingDate" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="730" y="1070" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-status" value="status" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1060" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-amount" value="amount" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1030" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-deposit" value="depositPaid" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="960" y="980" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-notes" value="notes" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="960" y="930" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-created" value="createdAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="940" y="880" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-updated" value="updatedAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="880" y="840" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Booking Attributes -->
+        <mxCell id="booking-id-edge" edge="1" parent="1" source="booking-id" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-eventid-edge" edge="1" parent="1" source="booking-eventid" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-vendorid-edge" edge="1" parent="1" source="booking-vendorid" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-serviceid-edge" edge="1" parent="1" source="booking-serviceid" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-date-edge" edge="1" parent="1" source="booking-date" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-status-edge" edge="1" parent="1" source="booking-status" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-amount-edge" edge="1" parent="1" source="booking-amount" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-deposit-edge" edge="1" parent="1" source="booking-deposit" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-notes-edge" edge="1" parent="1" source="booking-notes" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-created-edge" edge="1" parent="1" source="booking-created" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="booking-updated-edge" edge="1" parent="1" source="booking-updated" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             BOOKS RELATIONSHIP (Event → Booking)
+        ======================================== -->
+        <mxCell id="books-rel" value="Books" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="550" y="850" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="event-books" value="1" edge="1" parent="1" source="event-entity" target="books-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="books-booking" value="M" edge="1" parent="1" source="books-rel" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             RECEIVES RELATIONSHIP (Vendor → Booking)
+        ======================================== -->
+        <mxCell id="receives-book-rel" value="Receives" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="970" y="700" width="90" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="vendor-receives-book" value="1" edge="1" parent="1" source="vendor-entity" target="receives-book-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="receives-book-booking" value="M" edge="1" parent="1" source="receives-book-rel" target="booking-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             FOR RELATIONSHIP (Booking → Service)
+        ======================================== -->
+        <mxCell id="for-rel" value="For" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="950" y="850" width="70" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="booking-for" value="M" edge="1" parent="1" source="booking-entity" target="for-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="for-service" value="1" edge="1" parent="1" source="for-rel" target="service-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             PAYMENT ENTITY - COMPLETE ATTRIBUTES
+        ======================================== -->
+        <mxCell id="payment-entity" value="Payment" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="750" y="1200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Payment Attributes - ALL COMPLETE -->
+        <mxCell id="payment-id" value="paymentID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="1160" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-bookingid" value="bookingID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="580" y="1210" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-amount" value="amount" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1260" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-method" value="paymentMethod" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="680" y="1290" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-status" value="status" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1290" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-transid" value="transactionID" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="880" y="1260" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-date" value="paymentDate" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1210" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-receipt" value="receiptURL" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1160" width="100" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Payment Attributes -->
+        <mxCell id="payment-id-edge" edge="1" parent="1" source="payment-id" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-bookingid-edge" edge="1" parent="1" source="payment-bookingid" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-amount-edge" edge="1" parent="1" source="payment-amount" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-method-edge" edge="1" parent="1" source="payment-method" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-status-edge" edge="1" parent="1" source="payment-status" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-transid-edge" edge="1" parent="1" source="payment-transid" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-date-edge" edge="1" parent="1" source="payment-date" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="payment-receipt-edge" edge="1" parent="1" source="payment-receipt" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             HAS RELATIONSHIP (Booking → Payment) 1:1
+        ======================================== -->
+        <mxCell id="has-rel" value="Has" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="770" y="1080" width="70" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="booking-has" value="1" edge="1" parent="1" source="booking-entity" target="has-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="has-payment" value="1" edge="1" parent="1" source="has-rel" target="payment-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             MESSAGE ENTITY - COMPLETE ATTRIBUTES
+        ======================================== -->
+        <mxCell id="message-entity" value="Message" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Message Attributes - ALL COMPLETE -->
+        <mxCell id="message-id" value="messageID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="message-senderid" value="senderID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="30" y="190" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="message-receiverid" value="receiverID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="30" y="240" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="message-content" value="content" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="message-timestamp" value="timestamp" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="140" y="320" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="message-isread" value="isRead" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="message-attach" value="attachmentURL" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="310" y="290" width="120" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Message Attributes -->
+        <mxCell id="message-id-edge" edge="1" parent="1" source="message-id" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="message-senderid-edge" edge="1" parent="1" source="message-senderid" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="message-receiverid-edge" edge="1" parent="1" source="message-receiverid" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="message-content-edge" edge="1" parent="1" source="message-content" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="message-timestamp-edge" edge="1" parent="1" source="message-timestamp" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="message-isread-edge" edge="1" parent="1" source="message-isread" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="message-attach-edge" edge="1" parent="1" source="message-attach" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             SENDS & RECEIVES RELATIONSHIPS (User → Message)
+        ======================================== -->
+        <mxCell id="sends-rel" value="Sends" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="80" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="receives-msg-rel" value="Receives" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="380" y="280" width="90" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-sends" value="1" edge="1" parent="1" source="user-entity" target="sends-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sends-message" value="M" edge="1" parent="1" source="sends-rel" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-receives-msg" value="1" edge="1" parent="1" source="user-entity" target="receives-msg-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="receives-msg-message" value="M" edge="1" parent="1" source="receives-msg-rel" target="message-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             AI RECOMMENDATION ENTITY - COMPLETE
+        ======================================== -->
+        <mxCell id="airec-entity" value="AIRecommendation" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="750" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- AI Recommendation Attributes - ALL COMPLETE -->
+        <mxCell id="airec-id" value="recommendationID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="850" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-clientid" value="clientID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="530" y="870" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-vendorid" value="vendorID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="820" y="870" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-score" value="score" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="620" y="680" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-reason" value="reason" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="700" y="670" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-factors" value="factors" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="780" y="680" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-created" value="createdAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="850" y="700" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect AI Recommendation Attributes -->
+        <mxCell id="airec-id-edge" edge="1" parent="1" source="airec-id" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-clientid-edge" edge="1" parent="1" source="airec-clientid" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-vendorid-edge" edge="1" parent="1" source="airec-vendorid" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-score-edge" edge="1" parent="1" source="airec-score" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-reason-edge" edge="1" parent="1" source="airec-reason" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-factors-edge" edge="1" parent="1" source="airec-factors" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="airec-created-edge" edge="1" parent="1" source="airec-created" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             GETS RELATIONSHIP (Client → AIRecommendation)
+        ======================================== -->
+        <mxCell id="gets-rel" value="Gets" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="600" width="70" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="client-gets" value="1" edge="1" parent="1" source="client-entity" target="gets-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gets-airec" value="M" edge="1" parent="1" source="gets-rel" target="airec-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             RECOMMENDS RELATIONSHIP (AIRecommendation → Vendor)
+        ======================================== -->
+        <mxCell id="recommends-rel" value="Recommends" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="850" y="600" width="110" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="airec-recommends" value="M" edge="1" parent="1" source="airec-entity" target="recommends-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="recommends-vendor" value="1" edge="1" parent="1" source="recommends-rel" target="vendor-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             NOTIFICATION ENTITY - COMPLETE ATTRIBUTES
+        ======================================== -->
+        <mxCell id="notif-entity" value="Notification" style="whiteSpace=wrap;html=1;align=center;fillColor=#E8F4F8;strokeColor=#333333;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1200" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Notification Attributes - ALL COMPLETE -->
+        <mxCell id="notif-id" value="notificationID (PK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1350" y="140" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-userid" value="userID (FK)" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="190" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-type" value="type" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="240" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-message" value="message" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="290" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-status" value="status" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="320" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-created" value="createdAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="330" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-sent" value="sentAt" style="ellipse;whiteSpace=wrap;html=1;align=center;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="320" width="70" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Connect Notification Attributes -->
+        <mxCell id="notif-id-edge" edge="1" parent="1" source="notif-id" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-userid-edge" edge="1" parent="1" source="notif-userid" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-type-edge" edge="1" parent="1" source="notif-type" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-message-edge" edge="1" parent="1" source="notif-message" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-status-edge" edge="1" parent="1" source="notif-status" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-created-edge" edge="1" parent="1" source="notif-created" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="notif-sent-edge" edge="1" parent="1" source="notif-sent" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             RECEIVES NOTIFICATION RELATIONSHIP (User → Notification)
+        ======================================== -->
+        <mxCell id="receives-notif-rel" value="Receives" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;fillColor=#FFE6E6;strokeColor=#333333;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1000" y="200" width="90" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user-receives-notif" value="1" edge="1" parent="1" source="user-entity" target="receives-notif-rel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="receives-notif-notif" value="M" edge="1" parent="1" source="receives-notif-rel" target="notif-entity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ========================================
+             LEGEND
+        ======================================== -->
+        <mxCell id="legend-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1400" width="300" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-title" value="Legend - Chen Notation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="1410" width="200" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-entity-box" value="Entity" style="whiteSpace=wrap;html=1;fillColor=#E8F4F8;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1450" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-rel-diamond" value="Relationship" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;fillColor=#FFE6E6;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1495" width="80" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-attr-oval" value="Attribute" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFACD;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1550" width="80" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend-text" value="Rectangle = Entity&#xa;Diamond = Relationship&#xa;Oval = Attribute&#xa;1 = One&#xa;M = Many&#xa;(PK) = Primary Key&#xa;(FK) = Foreign Key" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1450" width="160" height="130" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
