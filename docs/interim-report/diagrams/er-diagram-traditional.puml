@@ -1,0 +1,287 @@
+@startuml EventiFy_Traditional_ER_Diagram
+
+' EventiFy System - Traditional Chen Notation ER Diagram
+' Following GeeksforGeeks ER Model style
+' Uses: Rectangles (Entities), Diamonds (Relationships), Ovals (Attributes)
+
+!define ENTITY_COLOR #E8F4F8
+!define RELATIONSHIP_COLOR #FFE6E6
+!define ATTRIBUTE_COLOR #FFFACD
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam defaultFontSize 11
+
+title EventiFy System - Traditional ER Diagram (Chen Notation)\nGroup 88 - Plymouth Batch 13
+
+' ==========================================
+' ENTITIES (Rectangles)
+' ==========================================
+
+rectangle "**User**" as user #E8F4F8 {
+}
+
+rectangle "**Client**" as client #E8F4F8 {
+}
+
+rectangle "**Vendor**" as vendor #E8F4F8 {
+}
+
+rectangle "**Event**" as event #E8F4F8 {
+}
+
+rectangle "**Service**" as service #E8F4F8 {
+}
+
+rectangle "**Booking**" as booking #E8F4F8 {
+}
+
+rectangle "**Payment**" as payment #E8F4F8 {
+}
+
+rectangle "**Message**" as message #E8F4F8 {
+}
+
+rectangle "**AIRecommendation**" as ai_rec #E8F4F8 {
+}
+
+rectangle "**Notification**" as notification #E8F4F8 {
+}
+
+' ==========================================
+' RELATIONSHIPS (Diamonds)
+' ==========================================
+
+diamond "  Is-A  " as isa_client #FFE6E6
+diamond "  Is-A  " as isa_vendor #FFE6E6
+
+diamond "Creates" as creates #FFE6E6
+diamond "Books" as books #FFE6E6
+diamond "Offers" as offers #FFE6E6
+diamond "Has" as has_payment #FFE6E6
+diamond "Sends" as sends #FFE6E6
+diamond "Receives" as receives_msg #FFE6E6
+diamond "Recommends" as recommends #FFE6E6
+diamond "Receives" as receives_notif #FFE6E6
+diamond "For" as booking_service #FFE6E6
+
+' ==========================================
+' USER ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>userID</u>" as user_id #FFFACD
+ellipse "name" as user_name #FFFACD
+ellipse "email" as user_email #FFFACD
+ellipse "password" as user_password #FFFACD
+ellipse "role" as user_role #FFFACD
+ellipse "phone" as user_phone #FFFACD
+
+user_id -- user
+user_name -- user
+user_email -- user
+user_password -- user
+user_role -- user
+user_phone -- user
+
+' ==========================================
+' CLIENT ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>clientID</u>" as client_id #FFFACD
+ellipse "preferences" as client_pref #FFFACD
+ellipse "budget" as client_budget #FFFACD
+
+client_id -- client
+client_pref -- client
+client_budget -- client
+
+' ==========================================
+' VENDOR ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>vendorID</u>" as vendor_id #FFFACD
+ellipse "businessName" as vendor_name #FFFACD
+ellipse "category" as vendor_cat #FFFACD
+ellipse "rating" as vendor_rating #FFFACD
+
+vendor_id -- vendor
+vendor_name -- vendor
+vendor_cat -- vendor
+vendor_rating -- vendor
+
+' ==========================================
+' EVENT ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>eventID</u>" as event_id #FFFACD
+ellipse "eventName" as event_name #FFFACD
+ellipse "eventDate" as event_date #FFFACD
+ellipse "location" as event_loc #FFFACD
+ellipse "budget" as event_budget #FFFACD
+ellipse "status" as event_status #FFFACD
+
+event_id -- event
+event_name -- event
+event_date -- event
+event_loc -- event
+event_budget -- event
+event_status -- event
+
+' ==========================================
+' SERVICE ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>serviceID</u>" as service_id #FFFACD
+ellipse "serviceName" as service_name #FFFACD
+ellipse "description" as service_desc #FFFACD
+ellipse "price" as service_price #FFFACD
+ellipse "availability" as service_avail #FFFACD
+
+service_id -- service
+service_name -- service
+service_desc -- service
+service_price -- service
+service_avail -- service
+
+' ==========================================
+' BOOKING ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>bookingID</u>" as booking_id #FFFACD
+ellipse "bookingDate" as booking_date #FFFACD
+ellipse "status" as booking_status #FFFACD
+ellipse "amount" as booking_amount #FFFACD
+
+booking_id -- booking
+booking_date -- booking
+booking_status -- booking
+booking_amount -- booking
+
+' ==========================================
+' PAYMENT ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>paymentID</u>" as payment_id #FFFACD
+ellipse "amount" as payment_amount #FFFACD
+ellipse "method" as payment_method #FFFACD
+ellipse "status" as payment_status #FFFACD
+ellipse "timestamp" as payment_time #FFFACD
+
+payment_id -- payment
+payment_amount -- payment
+payment_method -- payment
+payment_status -- payment
+payment_time -- payment
+
+' ==========================================
+' MESSAGE ENTITY WITH ATTRIBUTES
+' ==========================================
+
+ellipse "<u>messageID</u>" as msg_id #FFFACD
+ellipse "content" as msg_content #FFFACD
+ellipse "timestamp" as msg_time #FFFACD
+ellipse "isRead" as msg_read #FFFACD
+
+msg_id -- message
+msg_content -- message
+msg_time -- message
+msg_read -- message
+
+' ==========================================
+' AI RECOMMENDATION ATTRIBUTES
+' ==========================================
+
+ellipse "<u>recommendationID</u>" as rec_id #FFFACD
+ellipse "score" as rec_score #FFFACD
+ellipse "reason" as rec_reason #FFFACD
+
+rec_id -- ai_rec
+rec_score -- ai_rec
+rec_reason -- ai_rec
+
+' ==========================================
+' NOTIFICATION ATTRIBUTES
+' ==========================================
+
+ellipse "<u>notificationID</u>" as notif_id #FFFACD
+ellipse "type" as notif_type #FFFACD
+ellipse "message" as notif_msg #FFFACD
+ellipse "status" as notif_status #FFFACD
+
+notif_id -- notification
+notif_type -- notification
+notif_msg -- notification
+notif_status -- notification
+
+' ==========================================
+' RELATIONSHIPS AND CARDINALITY
+' ==========================================
+
+' User IS-A relationships (Inheritance)
+user -- isa_client
+isa_client -- client : "  "
+note on link: Is-A
+
+user -- isa_vendor
+isa_vendor -- vendor : "  "
+
+' Client CREATES Event (1:M)
+client "1" -- creates
+creates -- "M" event
+note on link: 1:M
+
+' Event BOOKS Vendor through Booking (M:N)
+event "M" -- books
+books -- "M" booking
+booking "M" -- books
+books -- "M" vendor
+note on link: M:N
+
+' Booking FOR Service
+booking "M" -- booking_service
+booking_service -- "1" service
+
+' Vendor OFFERS Service (1:M)
+vendor "1" -- offers
+offers -- "M" service
+note on link: 1:M
+
+' Booking HAS Payment (1:1)
+booking "1" -- has_payment
+has_payment -- "1" payment
+note on link: 1:1
+
+' User SENDS/RECEIVES Message (M:M)
+user "M" -down- sends
+sends -down- "M" message
+
+user "M" -down- receives_msg
+receives_msg -down- "M" message
+note on link: Self-referencing M:M
+
+' Client and Vendor in AI Recommendation (M:M)
+client "M" -- recommends
+recommends -- "M" ai_rec
+ai_rec "M" -- recommends
+recommends -- "M" vendor
+note on link: M:M
+
+' User RECEIVES Notification (1:M)
+user "1" -- receives_notif
+receives_notif -- "M" notification
+note on link: 1:M
+
+' ==========================================
+' LEGEND
+' ==========================================
+
+legend right
+  |= Symbol |= Meaning |
+  | Rectangle | Entity |
+  | Diamond | Relationship |
+  | Oval | Attribute |
+  | <u>Underlined</u> | Primary Key |
+  | 1, M, N | Cardinality |
+endlegend
+
+@enduml

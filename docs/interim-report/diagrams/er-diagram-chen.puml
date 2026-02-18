@@ -1,0 +1,174 @@
+@startuml EventiFy_Traditional_ER
+
+' Traditional Chen Notation ER Diagram for EventiFy
+' Rectangles = Entities, Diamonds = Relationships, Ovals = Attributes
+
+skinparam monochrome false
+skinparam backgroundColor white
+skinparam defaultFontSize 10
+
+title EventiFy System - Traditional ER Diagram (Chen Notation)\nGroup 88 - Plymouth Batch 13
+
+' Define styling
+skinparam rectangle {
+    BackgroundColor #E8F4F8
+    BorderColor #333333
+}
+
+skinparam diamond {
+    BackgroundColor #FFE6E6
+    BorderColor #333333
+}
+
+skinparam note {
+    BackgroundColor #FFFACD
+    BorderColor #333333
+}
+
+' ==========================================
+' MAIN ENTITIES
+' ==========================================
+
+package "Entities" {
+    rectangle "User" as User {
+        <u>userID</u>
+        name
+        email
+        password
+        role
+        phone
+    }
+    
+    rectangle "Client" as Client {
+        <u>clientID</u>
+        preferences
+        budget
+    }
+    
+    rectangle "Vendor" as Vendor {
+        <u>vendorID</u>
+        businessName
+        category
+        rating
+    }
+    
+    rectangle "Event" as Event {
+        <u>eventID</u>
+        eventName
+        eventDate
+        location
+        budget
+        status
+    }
+    
+    rectangle "Service" as Service {
+        <u>serviceID</u>
+        serviceName
+        description
+        price
+        availability
+    }
+    
+    rectangle "Booking" as Booking {
+        <u>bookingID</u>
+        bookingDate
+        status
+        amount
+    }
+    
+    rectangle "Payment" as Payment {
+        <u>paymentID</u>
+        amount
+        method
+        status
+        timestamp
+    }
+    
+    rectangle "Message" as Message {
+        <u>messageID</u>
+        content
+        timestamp
+        isRead
+    }
+    
+    rectangle "AIRecommendation" as AIRec {
+        <u>recommendationID</u>
+        score
+        reason
+    }
+    
+    rectangle "Notification" as Notif {
+        <u>notificationID</u>
+        type
+        message
+        status
+    }
+}
+
+' ==========================================
+' RELATIONSHIPS
+' ==========================================
+
+User -[hidden]- Client
+User -[hidden]- Vendor
+
+Client "1" -down-> "M" Event : Creates >
+note on link
+    1:M
+end note
+
+Event "M" -right-> "M" Booking : Includes >
+Booking "M" -right-> "M" Vendor : With >
+note on link
+    M:N via Booking
+end note
+
+Vendor "1" -down-> "M" Service : Offers >
+note on link
+    1:M
+end note
+
+Booking "M" -down-> "1" Service : For >
+
+Booking "1" -right-> "1" Payment : Has >
+note on link
+    1:1
+end note
+
+User "M" -up-> "M" Message : Sends >
+User "M" -up-> "M" Message : Receives >
+note on link
+    Self-referencing M:M
+end note
+
+Client "M" -down-> "M" AIRec : Gets >
+AIRec "M" -down-> "M" Vendor : Recommends >
+note on link
+    M:M via AIRecommendation
+end note
+
+User "1" -down-> "M" Notif : Receives >
+note on link
+    1:M
+end note
+
+' IS-A relationships
+User <|-- Client : "IS-A"
+User <|-- Vendor : "IS-A"
+
+' ==========================================
+' LEGEND
+' ==========================================
+
+legend bottom right
+    **ER Diagram Notation (Chen Style)**
+    --
+    **Rectangle** = Entity
+    **Line with label** = Relationship
+    **<u>Underlined</u>** = Primary Key
+    **1** = One
+    **M** = Many
+    **M:N** = Many-to-Many
+endlegend
+
+@enduml

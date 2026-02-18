@@ -1,0 +1,99 @@
+digraph EventiFy_ER_Chen {
+    // Traditional Chen Notation ER Diagram for EventiFy
+    // Rectangles = Entities, Diamonds = Relationships, Ovals = Attributes
+    
+    graph [fontname="Arial", fontsize=12, label="EventiFy System - Traditional ER Diagram (Chen Notation)\nGroup 88 - Plymouth Batch 13", labelloc=t];
+    node [fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    
+    rankdir=TB;
+    
+    // ======== ENTITIES (Rectangles) ========
+    User [shape=box, style=filled, fillcolor="#E8F4F8", label="User\l━━━━━━━━\luserID (PK)\lname\lemail\lpassword\lrole\lphone\l"];
+    Client [shape=box, style=filled, fillcolor="#E8F4F8", label="Client\l━━━━━━━━\lclientID (PK)\luserID (FK)\lpreferences\lbudget\l"];
+    Vendor [shape=box, style=filled, fillcolor="#E8F4F8", label="Vendor\l━━━━━━━━\lvendorID (PK)\luserID (FK)\lbusinessName\lcategory\lrating\l"];
+    Event [shape=box, style=filled, fillcolor="#E8F4F8", label="Event\l━━━━━━━━\leventID (PK)\lclientID (FK)\leventName\leventDate\llocation\lbudget\lstatus\l"];
+    Service [shape=box, style=filled, fillcolor="#E8F4F8", label="Service\l━━━━━━━━\lserviceID (PK)\lvendorID (FK)\lserviceName\ldescription\lprice\lavailability\l"];
+    Booking [shape=box, style=filled, fillcolor="#E8F4F8", label="Booking\l━━━━━━━━\lbookingID (PK)\leventID (FK)\lvendorID (FK)\lserviceID (FK)\lbookingDate\lstatus\lamount\l"];
+    Payment [shape=box, style=filled, fillcolor="#E8F4F8", label="Payment\l━━━━━━━━\lpaymentID (PK)\lbookingID (FK)\lamount\lmethod\lstatus\ltimestamp\l"];
+    Message [shape=box, style=filled, fillcolor="#E8F4F8", label="Message\l━━━━━━━━\lmessageID (PK)\lsenderID (FK)\lreceiverID (FK)\lcontent\ltimestamp\lisRead\l"];
+    AIRec [shape=box, style=filled, fillcolor="#E8F4F8", label="AIRecommendation\l━━━━━━━━\lrecommendationID (PK)\lclientID (FK)\lvendorID (FK)\lscore\lreason\l"];
+    Notification [shape=box, style=filled, fillcolor="#E8F4F8", label="Notification\l━━━━━━━━\lnotificationID (PK)\luserID (FK)\ltype\lmessage\lstatus\l"];
+    
+    // ======== RELATIONSHIPS (Diamonds) ========
+    ISA_Client [shape=diamond, style=filled, fillcolor="#FFE6E6", label="IS-A"];
+    ISA_Vendor [shape=diamond, style=filled, fillcolor="#FFE6E6", label="IS-A"];
+    Creates [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Creates"];
+    Books [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Books"];
+    Offers [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Offers"];
+    For [shape=diamond, style=filled, fillcolor="#FFE6E6", label="For"];
+    Has [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Has"];
+    Sends [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Sends"];
+    Receives_Msg [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Receives"];
+    Gets [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Gets"];
+    Recommends [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Recommends"];
+    Receives_Notif [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Receives"];
+    
+    // ======== INHERITANCE RELATIONSHIPS ========
+    User -> ISA_Client [label=""];
+    ISA_Client -> Client [label=""];
+    
+    User -> ISA_Vendor [label=""];
+    ISA_Vendor -> Vendor [label=""];
+    
+    // ======== MAIN RELATIONSHIPS WITH CARDINALITY ========
+    
+    // Client Creates Event (1:M)
+    Client -> Creates [label="1"];
+    Creates -> Event [label="M"];
+    
+    // Event Books Vendor via Booking (M:N)
+    Event -> Books [label="M"];
+    Books -> Booking [label=""];
+    Booking -> Books [label=""];
+    Books -> Vendor [label="M"];
+    
+    // Vendor Offers Service (1:M)
+    Vendor -> Offers [label="1"];
+    Offers -> Service [label="M"];
+    
+    // Booking For Service (M:1)
+    Booking -> For [label="M"];
+    For -> Service [label="1"];
+    
+    // Booking Has Payment (1:1)
+    Booking -> Has [label="1"];
+    Has -> Payment [label="1"];
+    
+    // User Sends/Receives Message (M:M self-referencing)
+    User -> Sends [label="M"];
+    Sends -> Message [label="M"];
+    
+    User -> Receives_Msg [label="M"];
+    Receives_Msg -> Message [label="M"];
+    
+    // Client Gets AIRecommendation, AIRec Recommends Vendor (M:M)
+    Client -> Gets [label="M"];
+    Gets -> AIRec [label="M"];
+    
+    AIRec -> Recommends [label="M"];
+    Recommends -> Vendor [label="M"];
+    
+    // User Receives Notification (1:M)
+    User -> Receives_Notif [label="1"];
+    Receives_Notif -> Notification [label="M"];
+    
+    // ======== LEGEND ========
+    subgraph cluster_legend {
+        label="Legend";
+        style=filled;
+        fillcolor="#F5F5F5";
+        
+        legend_entity [shape=box, style=filled, fillcolor="#E8F4F8", label="Entity\n(Rectangle)"];
+        legend_rel [shape=diamond, style=filled, fillcolor="#FFE6E6", label="Relationship\n(Diamond)"];
+        legend_card [shape=plaintext, label="Cardinality:\n1 = One\nM = Many"];
+        
+        legend_entity -> legend_rel [style=invis];
+        legend_rel -> legend_card [style=invis];
+    }
+}

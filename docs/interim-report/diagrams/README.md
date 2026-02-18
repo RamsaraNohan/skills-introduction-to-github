@@ -8,15 +8,25 @@ This directory contains all architectural and design diagrams for the EventiFy p
 
 The ER Diagram illustrates the complete database structure for the EventiFy system.
 
-**Files:**
+**Available in TWO styles:**
+
+#### 1. Traditional Chen Notation (GeeksforGeeks Style) ⭐ NEW
+Following traditional ER modeling as taught in database courses:
+- 📄 `CHEN-NOTATION-README.md` - Chen notation documentation (9KB)
+- 🖼️ `EventiFy_ER_Chen_Notation.png` - Traditional ER diagram (177KB)
+- 🎨 `EventiFy_ER_Chen_Notation.svg` - Scalable vector (25KB)
+- 📝 `er-diagram-chen.dot` - Graphviz DOT source (editable)
+
+**Quick View:**
+![Traditional Chen ER Diagram](EventiFy_ER_Chen_Notation.png)
+
+#### 2. UML Class Diagram Style (Modern)
+Modern software engineering approach:
 - 📄 `ER-DIAGRAM-README.md` - Comprehensive documentation (15KB)
 - 🖼️ `EventiFy_ER_Diagram.png` - High-quality PNG image (144KB, 1569x1301 px)
 - 🎨 `EventiFy_ER_Diagram.svg` - Scalable vector graphic (58KB)
 - 📝 `er-diagram.puml` - PlantUML source file (editable)
 - 📝 `er-diagram-mermaid.md` - Mermaid diagram (GitHub compatible)
-
-**Quick View:**
-![EventiFy ER Diagram](EventiFy_ER_Diagram.png)
 
 ---
 
