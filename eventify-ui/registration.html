@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - EventiFy</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .registration-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .registration-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            max-width: 600px;
+            width: 100%;
+            margin: 0 var(--spacing-lg);
+        }
+        
+        .registration-header {
+            padding: var(--spacing-2xl);
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .registration-header h1 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .registration-body {
+            padding: var(--spacing-2xl);
+        }
+        
+        .role-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .role-card {
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .role-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .role-card.active {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .role-card input[type="radio"] {
+            display: none;
+        }
+        
+        .role-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .role-title {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .role-description {
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+        }
+        
+        .password-strength {
+            margin-top: var(--spacing-sm);
+        }
+        
+        .strength-bar {
+            height: 4px;
+            background: var(--gray-200);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: var(--radius-full);
+        }
+        
+        .strength-weak { background: var(--error); width: 33%; }
+        .strength-medium { background: var(--warning); width: 66%; }
+        .strength-strong { background: var(--success); width: 100%; }
+        
+        .strength-text {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+        }
+        
+        .registration-footer {
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+            text-align: center;
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+        }
+        
+        .registration-footer a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .registration-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .role-selection {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <div class="registration-card">
+            <!-- Header -->
+            <div class="registration-header">
+                <h1>Join EventiFy</h1>
+                <p>Create your account and start planning amazing events</p>
+            </div>
+            
+            <!-- Body -->
+            <div class="registration-body">
+                <!-- Success/Error Alert -->
+                <div id="alertMessage" class="d-none"></div>
+                
+                <form id="registrationForm">
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label class="form-label required">I want to:</label>
+                        <div class="role-selection">
+                            <label class="role-card active" id="clientCard">
+                                <input type="radio" name="role" value="client" checked>
+                                <div class="role-icon">🎉</div>
+                                <div class="role-title">Plan Events</div>
+                                <div class="role-description">Find vendors and organize my events</div>
+                            </label>
+                            <label class="role-card" id="vendorCard">
+                                <input type="radio" name="role" value="vendor">
+                                <div class="role-icon">🏪</div>
+                                <div class="role-title">Offer Services</div>
+                                <div class="role-description">Provide event services to clients</div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName" class="form-label required">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName"
+                            class="form-input" 
+                            placeholder="Enter your full name"
+                            required
+                        >
+                        <div class="form-error" id="fullNameError">Please enter your full name</div>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email" class="form-label required">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            class="form-input" 
+                            placeholder="your.email@example.com"
+                            required
+                        >
+                        <div class="form-error" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phone" class="form-label required">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone"
+                            class="form-input" 
+                            placeholder="+94 XX XXX XXXX"
+                            required
+                        >
+                        <div class="form-error" id="phoneError">Please enter a valid phone number</div>
+                        <div class="form-help">Format: +94 XX XXX XXXX</div>
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password" class="form-label required">Password</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            class="form-input" 
+                            placeholder="Create a strong password"
+                            required
+                        >
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <div class="strength-text" id="strengthText">Password strength: None</div>
+                        </div>
+                        <div class="form-error" id="passwordError">Password must be at least 8 characters with uppercase, lowercase, and number</div>
+                        <div class="form-help">Minimum 8 characters, including uppercase, lowercase, and number</div>
+                    </div>
+                    
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label required">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            name="confirmPassword"
+                            class="form-input" 
+                            placeholder="Re-enter your password"
+                            required
+                        >
+                        <div class="form-error" id="confirmPasswordError">Passwords do not match</div>
+                    </div>
+                    
+                    <!-- Vendor-specific fields (hidden by default) -->
+                    <div id="vendorFields" class="d-none">
+                        <div class="form-group">
+                            <label for="businessName" class="form-label required">Business Name</label>
+                            <input 
+                                type="text" 
+                                id="businessName" 
+                                name="businessName"
+                                class="form-input" 
+                                placeholder="Enter your business name"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="serviceCategory" class="form-label required">Service Category</label>
+                            <select id="serviceCategory" name="serviceCategory" class="form-select">
+                                <option value="">Select a category</option>
+                                <option value="venue">Venue & Location</option>
+                                <option value="catering">Catering & Food</option>
+                                <option value="decoration">Decoration & Florals</option>
+                                <option value="photography">Photography & Videography</option>
+                                <option value="music">Music & Entertainment</option>
+                                <option value="lighting">Lighting & Sound</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="planning">Event Planning</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Terms and Conditions -->
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="#" style="color: var(--primary-color);">Terms and Conditions</a> 
+                            and <a href="#" style="color: var(--primary-color);">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        Create Account
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Footer -->
+            <div class="registration-footer">
+                <p>Already have an account? <a href="#">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/registration.js"></script>
+</body>
+</html>

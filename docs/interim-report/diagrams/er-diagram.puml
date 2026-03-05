@@ -1,0 +1,208 @@
+@startuml EventiFy_ER_Diagram
+
+' EventiFy System - Entity Relationship Diagram
+' Appendix C - Detailed ER Diagram
+
+skinparam linetype ortho
+skinparam backgroundColor #FEFEFE
+skinparam classBackgroundColor #F8F9FA
+skinparam classBorderColor #212529
+
+' Title
+title EventiFy System - Entity Relationship Diagram\nGroup 88 - Plymouth Batch 13
+
+' ========================
+' ENTITIES
+' ========================
+
+entity "User" as user {
+  * **userID** : INT <<PK>>
+  --
+  * name : VARCHAR(100)
+  * email : VARCHAR(100) <<UNIQUE>>
+  * password : VARCHAR(255)
+  * role : ENUM('client', 'vendor', 'admin')
+  * phone : VARCHAR(20)
+  * createdAt : TIMESTAMP
+  * updatedAt : TIMESTAMP
+}
+
+entity "Client" as client {
+  * **clientID** : INT <<PK>>
+  * **userID** : INT <<FK>>
+  --
+  preferences : JSON
+  budget : DECIMAL(10,2)
+  eventHistory : TEXT
+}
+
+entity "Vendor" as vendor {
+  * **vendorID** : INT <<PK>>
+  * **userID** : INT <<FK>>
+  --
+  * businessName : VARCHAR(200)
+  * category : VARCHAR(50)
+  rating : DECIMAL(3,2)
+  * status : ENUM('active', 'inactive')
+  verifiedAt : TIMESTAMP
+}
+
+entity "Admin" as admin {
+  * **adminID** : INT <<PK>>
+  * **userID** : INT <<FK>>
+  --
+  permissions : JSON
+  lastLoginAt : TIMESTAMP
+}
+
+entity "Event" as event {
+  * **eventID** : INT <<PK>>
+  * **clientID** : INT <<FK>>
+  --
+  * eventName : VARCHAR(200)
+  * eventDate : DATE
+  * location : VARCHAR(255)
+  * budget : DECIMAL(10,2)
+  guestCount : INT
+  * status : ENUM('planning', 'confirmed', 'completed', 'cancelled')
+  description : TEXT
+  * createdAt : TIMESTAMP
+  updatedAt : TIMESTAMP
+}
+
+entity "Service" as service {
+  * **serviceID** : INT <<PK>>
+  * **vendorID** : INT <<FK>>
+  --
+  * category : VARCHAR(50)
+  * serviceName : VARCHAR(200)
+  description : TEXT
+  * price : DECIMAL(10,2)
+  availability : BOOLEAN
+  duration : INT
+  * createdAt : TIMESTAMP
+}
+
+entity "Booking" as booking {
+  * **bookingID** : INT <<PK>>
+  * **eventID** : INT <<FK>>
+  * **vendorID** : INT <<FK>>
+  * **serviceID** : INT <<FK>>
+  --
+  * bookingDate : DATE
+  * status : ENUM('pending', 'confirmed', 'cancelled', 'completed')
+  * amount : DECIMAL(10,2)
+  depositPaid : BOOLEAN
+  notes : TEXT
+  * createdAt : TIMESTAMP
+  updatedAt : TIMESTAMP
+}
+
+entity "Payment" as payment {
+  * **paymentID** : INT <<PK>>
+  * **bookingID** : INT <<FK>>
+  --
+  * amount : DECIMAL(10,2)
+  * paymentMethod : ENUM('card', 'bank_transfer', 'cash')
+  * status : ENUM('pending', 'completed', 'failed', 'refunded')
+  transactionID : VARCHAR(100)
+  * paymentDate : TIMESTAMP
+  receiptURL : VARCHAR(255)
+}
+
+entity "Message" as message {
+  * **messageID** : INT <<PK>>
+  * **senderID** : INT <<FK>>
+  * **receiverID** : INT <<FK>>
+  --
+  * content : TEXT
+  * timestamp : TIMESTAMP
+  isRead : BOOLEAN
+  attachmentURL : VARCHAR(255)
+}
+
+entity "AIRecommendation" as ai_recommendation {
+  * **recommendationID** : INT <<PK>>
+  * **clientID** : INT <<FK>>
+  * **vendorID** : INT <<FK>>
+  --
+  * score : DECIMAL(5,2)
+  reason : TEXT
+  factors : JSON
+  * createdAt : TIMESTAMP
+}
+
+entity "Notification" as notification {
+  * **notificationID** : INT <<PK>>
+  * **userID** : INT <<FK>>
+  --
+  * type : ENUM('email', 'sms', 'in-app')
+  * message : TEXT
+  * status : ENUM('pending', 'sent', 'failed')
+  * createdAt : TIMESTAMP
+  sentAt : TIMESTAMP
+}
+
+' ========================
+' RELATIONSHIPS
+' ========================
+
+' User specialization (ISA relationships)
+user ||--o| client : "is a"
+user ||--o| vendor : "is a"
+user ||--o| admin : "is a"
+
+' User to Event (1:M)
+client ||--o{ event : "creates"
+
+' Event to Booking to Vendor (M:N through Booking)
+event ||--o{ booking : "has"
+vendor ||--o{ booking : "receives"
+service ||--o{ booking : "booked in"
+
+' Vendor to Service (1:M)
+vendor ||--o{ service : "offers"
+
+' Booking to Payment (1:1)
+booking ||--|| payment : "has"
+
+' User to Message (M:N self-referencing)
+user ||--o{ message : "sends"
+user ||--o{ message : "receives"
+
+' Client to AIRecommendation to Vendor (M:N)
+client ||--o{ ai_recommendation : "gets"
+vendor ||--o{ ai_recommendation : "recommended in"
+
+' User to Notification (1:M)
+user ||--o{ notification : "receives"
+
+' ========================
+' NOTES
+' ========================
+
+note right of user
+  **Base Entity**
+  All users (clients, vendors, admins)
+  inherit from this entity
+end note
+
+note right of booking
+  **Junction Table**
+  Represents M:N relationship
+  between Events and Vendors
+end note
+
+note right of ai_recommendation
+  **Recommendation Engine**
+  Stores AI-generated vendor
+  recommendations for clients
+end note
+
+note bottom of payment
+  **Payment Processing**
+  Supports multiple payment methods
+  Tracks transaction status
+end note
+
+@enduml

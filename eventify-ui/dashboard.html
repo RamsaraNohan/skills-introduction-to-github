@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event - EventiFy Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background: var(--gray-50);
+        }
+        
+        .dashboard-container {
+            min-height: 100vh;
+            padding-bottom: var(--spacing-2xl);
+        }
+        
+        .wizard-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+        
+        .wizard-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .wizard-header h1 {
+            color: var(--gray-900);
+        }
+        
+        /* Progress Steps */
+        .wizard-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-2xl);
+            position: relative;
+        }
+        
+        .wizard-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-300);
+            z-index: 0;
+        }
+        
+        .step-progress {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            z-index: 1;
+        }
+        
+        .wizard-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--gray-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-sm);
+            font-weight: 700;
+            font-size: var(--font-size-lg);
+            color: var(--gray-500);
+            transition: var(--transition);
+        }
+        
+        .wizard-step.active .step-circle {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .wizard-step.completed .step-circle {
+            background: var(--success);
+            border-color: var(--success);
+            color: var(--white);
+        }
+        
+        .step-label {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+        
+        .wizard-step.active .step-label {
+            color: var(--primary-color);
+        }
+        
+        /* Form Steps */
+        .form-step {
+            display: none;
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .step-title {
+            font-size: var(--font-size-2xl);
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .step-description {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        /* Service Selection */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .service-card {
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .service-card.selected {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .service-name {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        /* Review Section */
+        .review-section {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .review-title {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--gray-200);
+        }
+        
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        
+        .review-label {
+            font-weight: 500;
+            color: var(--gray-600);
+        }
+        
+        .review-value {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        
+        /* Navigation Buttons */
+        .wizard-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .btn-back {
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .btn-back:hover {
+            background: var(--gray-300);
+        }
+        
+        /* Input group for date and time */
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+        
+        @media (max-width: 768px) {
+            .wizard-steps {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+            
+            .wizard-step {
+                min-width: 80px;
+            }
+            
+            .step-circle {
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-size-base);
+            }
+            
+            .step-label {
+                font-size: 0.7rem;
+            }
+            
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="#" class="navbar-brand">🎉 EventiFy</a>
+                <ul class="navbar-menu">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="vendors.html">Find Vendors</a></li>
+                    <li><a href="#">My Events</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="dashboard-container">
+        <div class="wizard-container">
+            <!-- Wizard Header -->
+            <div class="wizard-header">
+                <h1>Create Your Event</h1>
+                <p>Follow the steps below to plan your perfect event</p>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="wizard-steps">
+                <div class="step-progress" id="stepProgress"></div>
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Basic Info</div>
+                </div>
+                <div class="wizard-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Event Details</div>
+                </div>
+                <div class="wizard-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Services</div>
+                </div>
+                <div class="wizard-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Review</div>
+                </div>
+            </div>
+            
+            <form id="eventForm">
+                <!-- Step 1: Basic Information -->
+                <div class="form-step active" data-step="1">
+                    <h2 class="step-title">Basic Information</h2>
+                    <p class="step-description">Let's start with the basic details of your event</p>
+                    
+                    <div class="form-group">
+                        <label for="eventName" class="form-label required">Event Name</label>
+                        <input type="text" id="eventName" class="form-input" placeholder="e.g., Sarah's Birthday Party" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="form-group">
+                            <label for="eventDate" class="form-label required">Event Date</label>
+                            <input type="date" id="eventDate" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime" class="form-label required">Event Time</label>
+                            <input type="time" id="eventTime" class="form-input" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventLocation" class="form-label required">Location</label>
+                        <input type="text" id="eventLocation" class="form-input" placeholder="City or venue address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventBudget" class="form-label required">Budget (LKR)</label>
+                        <input type="number" id="eventBudget" class="form-input" placeholder="e.g., 500000" min="0" step="1000" required>
+                        <div class="form-help">Enter your estimated budget in Sri Lankan Rupees</div>
+                    </div>
+                    
+                    <div class="wizard-actions">
+                        <div></div>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Event Details -->
+                <div class="form-step" data-step="2">
+                    <h2 class="step-title">Event Details</h2>
+                    <p class="step-description">Tell us more about your event</p>
+                    
+                    <div class="form-group">
+                        <label for="eventType" class="form-label required">Event Type</label>
+                        <select id="eventType" class="form-select" required>
+                            <option value="">Select event type</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="birthday">Birthday Party</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="conference">Conference</option>
+                            <option value="festival">Festival</option>
+                            <option value="private">Private Party</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestCount" class="form-label required">Expected Number of Guests</label>
+                        <input type="number" id="guestCount" class="form-input" placeholder="e.g., 150" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDescription" class="form-label">Event Description</label>
+                        <textarea id="eventDescription" class="form-textarea" placeholder="Describe your event, special requirements, or theme..."></textarea>
+                        <div class="form-help">Optional: Share any special requirements or themes</div>
+                    </div>
+                    
+                    <div class="wizard-actions">
+                        <button type="button" class="btn btn-back" onclick="prevStep()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Service Selection -->
+                <div class="form-step" data-step="3">
+                    <h2 class="step-title">Select Services</h2>
+                    <p class="step-description">Choose the services you need for your event</p>
+                    
+                    <div class="service-grid">
+                        <div class="service-card" data-service="venue">
+                            <div class="service-icon">🏛️</div>
+                            <div class="service-name">Venue</div>
+                        </div>
+                        <div class="service-card" data-service="catering">
+                            <div class="service-icon">🍽️</div>
+                            <div class="service-name">Catering</div>
+                        </div>
+                        <div class="service-card" data-service="decoration">
+                            <div class="service-icon">🎨</div>
+                            <div class="service-name">Decoration</div>
+                        </div>
+                        <div class="service-card" data-service="photography">
+                            <div class="service-icon">📸</div>
+                            <div class="service-name">Photography</div>
+                        </div>
+                        <div class="service-card" data-service="music">
+                            <div class="service-icon">🎵</div>
+                            <div class="service-name">Music & DJ</div>
+                        </div>
+                        <div class="service-card" data-service="lighting">
+                            <div class="service-icon">💡</div>
+                            <div class="service-name">Lighting</div>
+                        </div>
+                        <div class="service-card" data-service="transportation">
+                            <div class="service-icon">🚗</div>
+                            <div class="service-name">Transportation</div>
+                        </div>
+                        <div class="service-card" data-service="planning">
+                            <div class="service-icon">📋</div>
+                            <div class="service-name">Event Planning</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-help">Click on the services you need. You can select multiple services.</div>
+                    
+                    <div class="wizard-actions">
+                        <button type="button" class="btn btn-back" onclick="prevStep()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Review →</button>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Review and Submit -->
+                <div class="form-step" data-step="4">
+                    <h2 class="step-title">Review Your Event</h2>
+                    <p class="step-description">Please review your event details before submission</p>
+                    
+                    <div class="review-section">
+                        <h3 class="review-title">Basic Information</h3>
+                        <div class="review-item">
+                            <span class="review-label">Event Name:</span>
+                            <span class="review-value" id="review-eventName">-</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Date & Time:</span>
+                            <span class="review-value" id="review-dateTime">-</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Location:</span>
+                            <span class="review-value" id="review-location">-</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Budget:</span>
+                            <span class="review-value" id="review-budget">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-section">
+                        <h3 class="review-title">Event Details</h3>
+                        <div class="review-item">
+                            <span class="review-label">Event Type:</span>
+                            <span class="review-value" id="review-eventType">-</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Guest Count:</span>
+                            <span class="review-value" id="review-guestCount">-</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Description:</span>
+                            <span class="review-value" id="review-description">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="review-section">
+                        <h3 class="review-title">Selected Services</h3>
+                        <div id="review-services">-</div>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <span>💡</span>
+                        <span>After submission, we'll use AI to recommend the best vendors for your event based on your preferences and budget.</span>
+                    </div>
+                    
+                    <div class="wizard-actions">
+                        <button type="button" class="btn btn-back" onclick="prevStep()">← Back</button>
+                        <button type="submit" class="btn btn-success btn-lg">✓ Create Event</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
